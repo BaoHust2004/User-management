@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Management</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+        h1 {
+            color: black;
+            padding: 10px 0;
+            margin: 0;
+            text-align: center;
+        }
+        form {
+            margin: 20px auto;
+            width: 80%;
+        }
+        table {
+            margin: 20px auto;
+            width: 80%;
+            border-collapse: collapse;
+        }
+        label{
+            font-size:26px;
+        }
+        input{
+            width:80%;
+            height:30px;
+        }
+        input.btn{
+            width:10%;
+            height:30px;
+            cursor:pointer;
+        }
+        th, td {
+            border: 1px solid white;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: grey;
+            color: white;
+        }
+        button{
+            background-color:red;
+            color:white;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>USER MANAGEMENT</h1>
+    <form id="Form">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="email">Email:</label><br>
+        <input type="text" id="email" name="email"><br>
+        <label for="age">Age:</label><br>
+        <input type="text" id="age" name="age"><br>
+        <input type="submit" class="btn" value="Submit">
+    </form>
+    <table id="dataTable">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Action</th>
+        </tr>
+    </table>
+    <script>
+
+    document.getElementById("Form").addEventListener("submit", function(a) {
+            a.preventDefault();
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var age = document.getElementById("age").value;
+            $("#dataTable").append(
+                "<tr>" +
+                    "<td>" + name + "</td>" +
+                    "<td>" + email + "</td>" +
+                    "<td>" + age + "</td>" +
+                    "<td><button onclick='deleteRow(this)'>Xóa</button></td>" +
+                "</tr>"
+            );
+        });
+
+        function deleteRow(btn) {
+    if (confirm("Bạn có chắc chắn muốn xóa hàng này không?")) {
+        var row = btn.parentElement.parentElement;
+        row.remove();
+    }
+}
+
+    </script>
+</body>
+</html>
